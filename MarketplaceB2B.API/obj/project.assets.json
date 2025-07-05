@@ -550,6 +550,7 @@
         "dependencies": {
           "MarketplaceB2B.Application": "1.0.0",
           "MarketplaceB2B.Domain": "1.0.0",
+          "Microsoft.AspNetCore.Authentication.JwtBearer": "7.0.0",
           "Microsoft.AspNetCore.Identity.EntityFrameworkCore": "7.0.0",
           "Pomelo.EntityFrameworkCore.MySql": "7.0.0"
         },
