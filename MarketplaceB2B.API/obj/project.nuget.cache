@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "4GwG/3zTM0I=",
+  "success": true,
+  "projectFilePath": "C:\\temp\\Projetos\\MarketplaceB2B\\MarketplaceB2B.API\\MarketplaceB2B.API.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\pedro\\.nuget\\packages\\microsoft.aspnetcore.openapi\\9.0.0\\microsoft.aspnetcore.openapi.9.0.0.nupkg.sha512",
+    "C:\\Users\\pedro\\.nuget\\packages\\microsoft.openapi\\1.6.17\\microsoft.openapi.1.6.17.nupkg.sha512"
+  ],
+  "logs": []
+}

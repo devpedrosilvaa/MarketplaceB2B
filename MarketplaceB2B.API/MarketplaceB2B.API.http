@@ -1,0 +1,6 @@
+@MarketplaceB2B.API_HostAddress = http://localhost:5252
+
+GET {{MarketplaceB2B.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
