@@ -5,7 +5,7 @@ using MarketplaceB2B.Infrastructure.Identities;
 
 namespace MarketplaceB2B.Infrastructure.Data {
     public class AppDBContext : IdentityDbContext<AppUser> {
-        public AppDBContext(DbContextOptions options) : base(options) { }
+        public AppDBContext(DbContextOptions<AppDBContext> options) : base(options) { }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder) {

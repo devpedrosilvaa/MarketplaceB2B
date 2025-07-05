@@ -1,0 +1,39 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v9.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v9.0": {
+      "MarketplaceB2B.Application/1.0.0": {
+        "dependencies": {
+          "MarketplaceB2B.Domain": "1.0.0"
+        },
+        "runtime": {
+          "MarketplaceB2B.Application.dll": {}
+        }
+      },
+      "MarketplaceB2B.Domain/1.0.0": {
+        "runtime": {
+          "MarketplaceB2B.Domain.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "MarketplaceB2B.Application/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "MarketplaceB2B.Domain/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

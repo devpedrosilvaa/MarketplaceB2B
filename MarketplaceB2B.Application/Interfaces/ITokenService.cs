@@ -2,6 +2,6 @@
 
 namespace MarketplaceB2B.Application.Interfaces {
     public interface ITokenService {
-        Task<string> GenerateToken(User user);
+        Task<string> GenerateToken(string UserName);
     }
 }
