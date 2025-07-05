@@ -4,6 +4,7 @@ using MarketplaceB2B.Infrastructure.Identities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using FluentValidation;
 
 namespace MarketplaceB2B.API.Controllers {
     [Route("api/[controller]")]
@@ -12,18 +13,31 @@ namespace MarketplaceB2B.API.Controllers {
         private readonly UserManager<AppUser> _userManager;
         private readonly SignInManager<AppUser> _signInManager;
         private readonly ITokenService _tokenService;
+        private readonly IValidator<UserRegisterDTO> _validatorUserRegisterDTO;
+        private readonly IValidator<UserLoginDTO> _validatorUserLoginDTO;
 
-        public AuthController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, ITokenService tokenService) {
+        public AuthController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, ITokenService tokenService,
+                                IValidator<UserRegisterDTO> validatorUserRegisterDTO, IValidator<UserLoginDTO> validatorUserLoginDTO) {
             _userManager = userManager;
             _signInManager = signInManager;
             _tokenService = tokenService;
+            _validatorUserRegisterDTO = validatorUserRegisterDTO;
+            _validatorUserLoginDTO = validatorUserLoginDTO;
         }
 
         [HttpPost("register")]
-        public async Task<IActionResult> Register([FromBody] UserRegisterDTO userRegisterDTO) {
+        public async Task<IActionResult> Register([FromBody] UserRegisterDTO userRegisterDTO ){
             try {
-                if (!ModelState.IsValid)
-                    return BadRequest(ModelState);
+                var validationResult = _validatorUserRegisterDTO.Validate(userRegisterDTO);
+                if (!validationResult.IsValid) {
+                    var problemDetails = new HttpValidationProblemDetails(validationResult.ToDictionary()) {
+                        Status = StatusCodes.Status400BadRequest,
+                        Title = "Validation failed",
+                        Detail = "One or more validation erros occurred",
+                        Instance = "api/auth/register"
+                    };
+                    return BadRequest(problemDetails);
+                }
 
                 var user = new AppUser {
                     UserName = userRegisterDTO.UserName,
@@ -34,24 +48,32 @@ namespace MarketplaceB2B.API.Controllers {
                 var result = await _userManager.CreateAsync(user, userRegisterDTO.Password);
                 if (result.Succeeded) {
                     var resultRole = await _userManager.AddToRoleAsync(user, "User");
-                    if (!resultRole.Succeeded)
+                    if (resultRole.Succeeded)
                         return Ok(new { Message = "User registered successfully" });
                     else
-                        return StatusCode(500, "ROLE" + resultRole.Errors);
+                        return StatusCode(500, resultRole.Errors);
                 }
                 else
-                    return StatusCode(500, "USER" + result.Errors);
+                    return StatusCode(500, result.Errors);
             }
             catch (Exception ex) {
-                return StatusCode(500, "EX" + ex.Message);
+                return StatusCode(500, ex.Message);
             }
         }
 
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] UserLoginDTO userLoginDTO) {
             try {
-                if (!ModelState.IsValid)
-                    return BadRequest(ModelState);
+                var validationResult = _validatorUserLoginDTO.Validate(userLoginDTO);
+                if (!validationResult.IsValid) {
+                    var problemDetails = new HttpValidationProblemDetails(validationResult.ToDictionary()) {
+                        Status = StatusCodes.Status400BadRequest,
+                        Title = "Validation failed",
+                        Detail = "One or more validation erros occurred",
+                        Instance = "api/auth/register"
+                    };
+                    return BadRequest(problemDetails);
+                }
 
                 var user = await _userManager.Users.FirstOrDefaultAsync(u => u.UserName.ToLower() == userLoginDTO.UserName.ToLower());
                 if (user == null)

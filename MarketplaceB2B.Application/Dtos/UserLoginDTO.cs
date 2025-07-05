@@ -7,9 +7,7 @@ using System.Threading.Tasks;
 
 namespace MarketplaceB2B.Application.Dtos {
     public class UserLoginDTO {
-        [Required(ErrorMessage = "UserName is required")]
         public string? UserName { get; set; }
-        [Required(ErrorMessage = "Email is required")]
         public string? Password { get; set; }
     }
 }
