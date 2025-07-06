@@ -1,0 +1,12 @@
+C:\temp\Projetos\MarketplaceB2B\MarketplaceB2B.Domain\bin\Debug\net9.0\MarketplaceB2B.Domain.deps.json
+C:\temp\Projetos\MarketplaceB2B\MarketplaceB2B.Domain\bin\Debug\net9.0\MarketplaceB2B.Domain.dll
+C:\temp\Projetos\MarketplaceB2B\MarketplaceB2B.Domain\bin\Debug\net9.0\MarketplaceB2B.Domain.pdb
+C:\temp\Projetos\MarketplaceB2B\MarketplaceB2B.Domain\obj\Debug\net9.0\MarketplaceB2B.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:\temp\Projetos\MarketplaceB2B\MarketplaceB2B.Domain\obj\Debug\net9.0\MarketplaceB2B.Domain.AssemblyInfoInputs.cache
+C:\temp\Projetos\MarketplaceB2B\MarketplaceB2B.Domain\obj\Debug\net9.0\MarketplaceB2B.Domain.AssemblyInfo.cs
+C:\temp\Projetos\MarketplaceB2B\MarketplaceB2B.Domain\obj\Debug\net9.0\MarketplaceB2B.Domain.csproj.CoreCompileInputs.cache
+C:\temp\Projetos\MarketplaceB2B\MarketplaceB2B.Domain\obj\Debug\net9.0\MarketplaceB2B.Domain.sourcelink.json
+C:\temp\Projetos\MarketplaceB2B\MarketplaceB2B.Domain\obj\Debug\net9.0\MarketplaceB2B.Domain.dll
+C:\temp\Projetos\MarketplaceB2B\MarketplaceB2B.Domain\obj\Debug\net9.0\refint\MarketplaceB2B.Domain.dll
+C:\temp\Projetos\MarketplaceB2B\MarketplaceB2B.Domain\obj\Debug\net9.0\MarketplaceB2B.Domain.pdb
+C:\temp\Projetos\MarketplaceB2B\MarketplaceB2B.Domain\obj\Debug\net9.0\ref\MarketplaceB2B.Domain.dll
