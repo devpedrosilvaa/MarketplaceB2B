@@ -30,5 +30,21 @@
       }
     ],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MarketplaceB2B.API.Controllers.ProviderController",
+    "Method": "SaveProvider",
+    "RelativePath": "api/Provider/register",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "registerDTO",
+        "Type": "MarketplaceB2B.Application.Dtos.ProviderRegisterDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
   }
 ]

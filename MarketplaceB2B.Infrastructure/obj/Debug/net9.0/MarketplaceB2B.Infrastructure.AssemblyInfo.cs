@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MarketplaceB2B.Infrastructure")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6058b2490f105ab70b0513a81a22c2346876e3dc")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4aa2cc0c90d67b20d02b355dd2440be257e9afc5")]
 [assembly: System.Reflection.AssemblyProductAttribute("MarketplaceB2B.Infrastructure")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MarketplaceB2B.Infrastructure")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
