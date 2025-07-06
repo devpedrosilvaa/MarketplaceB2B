@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using FluentValidation;
+using MarketplaceB2B.Domain.Enums;
 
 namespace MarketplaceB2B.API.Controllers {
     [Route("api/[controller]")]
@@ -26,7 +27,7 @@ namespace MarketplaceB2B.API.Controllers {
         }
 
         [HttpPost("register")]
-        public async Task<IActionResult> Register([FromBody] UserRegisterDTO userRegisterDTO ){
+        public async Task<IActionResult> Register([FromBody] UserRegisterDTO userRegisterDTO){
             try {
                 var validationResult = _validatorUserRegisterDTO.Validate(userRegisterDTO);
                 if (!validationResult.IsValid) {
@@ -34,14 +35,16 @@ namespace MarketplaceB2B.API.Controllers {
                         Status = StatusCodes.Status400BadRequest,
                         Title = "Validation failed",
                         Detail = "One or more validation erros occurred",
-                        Instance = "api/auth/register"
+                        Instance = Request.Path
                     };
                     return BadRequest(problemDetails);
                 }
-
+                TypeUser typeUser;
+                Enum.TryParse(userRegisterDTO.TypeUser, out typeUser); 
                 var user = new AppUser {
                     UserName = userRegisterDTO.UserName,
                     Email = userRegisterDTO.Email,
+                    TypeUser = typeUser,
                     CreatedAt = DateTime.UtcNow,
                 };
 
@@ -70,14 +73,14 @@ namespace MarketplaceB2B.API.Controllers {
                         Status = StatusCodes.Status400BadRequest,
                         Title = "Validation failed",
                         Detail = "One or more validation erros occurred",
-                        Instance = "api/auth/register"
+                        Instance = Request.Path
                     };
                     return BadRequest(problemDetails);
                 }
 
-                var user = await _userManager.Users.FirstOrDefaultAsync(u => u.UserName.ToLower() == userLoginDTO.UserName.ToLower());
+                var user = await _userManager.Users.FirstOrDefaultAsync(u => u.Email.ToLower() == userLoginDTO.Email.ToLower());
                 if (user == null)
-                    return Unauthorized("Username or password is incorrect");
+                    return Unauthorized("Email or password is incorrect");
 
                 var result = await _signInManager.CheckPasswordSignInAsync(user, userLoginDTO.Password, false);
                 if (result.Succeeded) {
@@ -87,7 +90,7 @@ namespace MarketplaceB2B.API.Controllers {
                     return Ok(new { Token = token });
                 }
                 else
-                    return Unauthorized("Username or password is incorrect");
+                    return Unauthorized("Email or password is incorrect");
             }
             catch (Exception ex) {
                 return StatusCode(500, ex.Message);
