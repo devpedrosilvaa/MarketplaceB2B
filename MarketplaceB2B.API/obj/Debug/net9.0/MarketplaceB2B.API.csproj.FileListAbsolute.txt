@@ -129,4 +129,3 @@ C:\temp\Projetos\MarketplaceB2B\MarketplaceB2B.API\bin\Debug\net9.0\zh-Hans\Micr
 C:\temp\Projetos\MarketplaceB2B\MarketplaceB2B.API\bin\Debug\net9.0\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\temp\Projetos\MarketplaceB2B\MarketplaceB2B.API\bin\Debug\net9.0\FluentValidation.dll
 C:\temp\Projetos\MarketplaceB2B\MarketplaceB2B.API\bin\Debug\net9.0\FluentValidation.DependencyInjectionExtensions.dll
-C:\temp\Projetos\MarketplaceB2B\MarketplaceB2B.API\obj\Debug\net9.0\staticwebassets.upToDateCheck.txt
