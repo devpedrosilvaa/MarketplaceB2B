@@ -6,7 +6,10 @@ namespace MarketplaceB2B.API.Extensions {
             if (user == null)
                 throw new ArgumentNullException(nameof(user));
 
-            return user.FindFirstValue(ClaimTypes.GivenName);
+            var username = user.FindFirstValue(ClaimTypes.GivenName);
+            if (username == null)
+                throw new ArgumentNullException(nameof(username));
+            return username;
         }
     }
 }

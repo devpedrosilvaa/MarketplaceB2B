@@ -46,7 +46,7 @@ builder.Services.AddAuthentication(options => {
         ValidateIssuerSigningKey = true,
         ValidIssuer = builder.Configuration["JwtBearer:Issuer"],
         ValidAudience = builder.Configuration["JwtBearer:Audience"],
-        IssuerSigningKey = new Microsoft.IdentityModel.Tokens.SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(builder.Configuration["JwtBearer:Key"])),
+        IssuerSigningKey = new Microsoft.IdentityModel.Tokens.SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(builder.Configuration["JwtBearer:Key"]!)),
         RoleClaimType = ClaimTypes.Role
     };
 });

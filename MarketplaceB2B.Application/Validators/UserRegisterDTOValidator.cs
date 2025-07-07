@@ -20,7 +20,7 @@ namespace MarketplaceB2B.Application.Validators {
 
             RuleFor(u => u.TypeUser)
                 .NotEmpty().WithMessage("TypeUser is required")
-                .Must(type => type.ToUpper().Equals(TypeUser.PROVIDER.ToString()) 
+                .Must(type => type!.ToUpper().Equals(TypeUser.PROVIDER.ToString()) 
                         || type.ToUpper().Equals(TypeUser.COMPANY.ToString()))
                             .WithMessage("TypeUser must be either PROVIDER or COMPANY");
         }

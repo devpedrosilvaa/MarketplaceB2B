@@ -11,6 +11,9 @@ namespace MarketplaceB2B.Application.Validators {
     public sealed class ProviderRegisterDTOValidator : AbstractValidator<ProviderRegisterDTO> {
         public ProviderRegisterDTOValidator() {
             RuleFor(p => p.CPF)
+                .NotEmpty().WithMessage("CPF is required")
+                .MinimumLength(11).WithMessage("CPF must be at least 11 characters long")
+                .MaximumLength(11).WithMessage("The CPF must be a maximum of 11 characters")
                 .Must(IsCpf).WithMessage("Provider's CPF is invalid ");
         }
 
