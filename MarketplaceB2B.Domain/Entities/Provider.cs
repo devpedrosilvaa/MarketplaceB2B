@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 namespace MarketplaceB2B.Domain.Entities {
     public class Provider {
         public int Id { get; set; }
+        public User? User { get; set; }
         public string? AppUserId { get; set; }
         public string? CPF { get; set; }
         public StatusProvider Status { get; set; }

@@ -14,19 +14,19 @@ namespace MarketplaceB2B.Infrastructure.Data.Repositories {
         public async Task<Provider?> GetProviderByCPF(string CPF) {
             var provider = await _dbContext.Providers.FirstOrDefaultAsync(
                                     p => p.CPF!.Equals(CPF));
-            return provider != null ? provider.IdentityToDomain() : null;
+            return provider != null ? provider.ProviderIdentityToDomain() : null;
         }
 
         public async Task<Provider?> GetProviderByUserId(string userId) {
             var provider = await _dbContext.Providers.FirstOrDefaultAsync(
                                     p => p.AppUserId!.Equals(userId));
-            return provider != null ? provider.IdentityToDomain() : null;
+            return provider != null ? provider.ProviderIdentityToDomain() : null;
         }
 
         public async Task<Provider> SaveProvider(Provider provider) {
-            var providerSaved = await _dbContext.Providers.AddAsync(provider.DomainToIdentity());
+            var providerSaved = await _dbContext.Providers.AddAsync(provider.ProviderDomainToIdentity());
             await _dbContext.SaveChangesAsync();
-            return providerSaved.Entity.IdentityToDomain();
+            return providerSaved.Entity.ProviderIdentityToDomain();
         }
     }
 }

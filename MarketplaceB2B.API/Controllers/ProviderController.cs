@@ -3,6 +3,7 @@ using MarketplaceB2B.API.Extensions;
 using MarketplaceB2B.Application.Dtos;
 using MarketplaceB2B.Application.Helpers;
 using MarketplaceB2B.Application.Interfaces;
+using MarketplaceB2B.Application.Mappers;
 using MarketplaceB2B.Domain.Entities;
 using MarketplaceB2B.Domain.Enums;
 using MarketplaceB2B.Infrastructure.Identities;
@@ -56,14 +57,31 @@ namespace MarketplaceB2B.API.Controllers {
                 };
 
                 var message = await _providerService.SaveProvider(provider);
-                if (message != Helper.DefaultMessage.INSERT.ToString()) 
+                if (message != Helper.DefaultMessage.INSERT.ToString())
                     return BadRequest(message);
-                return Ok(message);
+                return CreatedAtAction(nameof(GetProfile), provider);
             }
             catch (Exception ex) {
                 return StatusCode(500, ex.Message);
             }
         }
 
+        [HttpGet("profile")]
+        [Authorize(Roles = "User")]
+        public async Task<IActionResult> GetProfile() {
+            try {
+                var username = User.GetUsername();
+                var AppUser = await _userManager.Users.FirstOrDefaultAsync(u => u.UserName!.Equals(u.UserName));
+                if (AppUser == null)
+                    return NotFound("Authenticated user's Provider profile not found");
+                var provider = await _providerService.GetProviderByUserId(AppUser.Id);
+                if (provider == null)
+                    return NotFound("Authenticated user's Provider profile not found");
+                return Ok(provider.ProviderDomainToResponse());
+            }
+            catch (Exception ex) {
+                return StatusCode(500, ex.Message);
+            }
+        }
     }
 }
