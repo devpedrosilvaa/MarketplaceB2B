@@ -7,6 +7,6 @@ using System.Threading.Tasks;
 
 namespace MarketplaceB2B.Application.Interfaces {
     public interface IProviderService {
-        Task<Provider> SaveProvider(Provider provider);
+        Task<string> SaveProvider(Provider provider);
     }
 }

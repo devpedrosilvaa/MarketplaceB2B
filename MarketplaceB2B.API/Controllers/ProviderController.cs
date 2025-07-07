@@ -1,6 +1,7 @@
 ﻿using FluentValidation;
 using MarketplaceB2B.API.Extensions;
 using MarketplaceB2B.Application.Dtos;
+using MarketplaceB2B.Application.Helpers;
 using MarketplaceB2B.Application.Interfaces;
 using MarketplaceB2B.Domain.Entities;
 using MarketplaceB2B.Domain.Enums;
@@ -41,9 +42,12 @@ namespace MarketplaceB2B.API.Controllers {
                 }
 
                 var username = User.GetUsername().ToLower();
-                var appUser = await _userManager.Users.FirstOrDefaultAsync(u => u.UserName.ToLower().Equals(username));
+                var appUser = await _userManager.Users.FirstOrDefaultAsync(u => u.UserName!.ToLower().Equals(username));
+                if (appUser == null)
+                    return NotFound($"User with UserName: {username} not found.");
                 if (!appUser.TypeUser.Equals(TypeUser.PROVIDER))
                     return BadRequest("Logged User not type PROVIDER");
+
                 Provider provider = new Provider() {
                     CPF = registerDTO.CPF,
                     Status = StatusProvider.ACTIVE,
@@ -51,9 +55,10 @@ namespace MarketplaceB2B.API.Controllers {
                     Description = registerDTO.Description
                 };
 
-                var providerSaved = await _providerService.SaveProvider(provider);
-
-                return Ok(providerSaved);
+                var message = await _providerService.SaveProvider(provider);
+                if (message != Helper.DefaultMessage.INSERT.ToString()) 
+                    return BadRequest(message);
+                return Ok(message);
             }
             catch (Exception ex) {
                 return StatusCode(500, ex.Message);

@@ -17,9 +17,14 @@ namespace MarketplaceB2B.Infrastructure.Data {
                 new IdentityRole { Name = "User", NormalizedName = "USER" }
             );
 
-            modelBuilder.Entity<AppProvider>().HasOne(p => p.AppUser)
+            modelBuilder.Entity<AppProvider>()
+                .HasOne(p => p.AppUser)
                 .WithOne(u => u.Provider)
                 .HasForeignKey<AppProvider>(p => p.AppUserId);
+            
+            modelBuilder.Entity<AppProvider>()
+                .HasIndex(p => p.CPF)
+                .IsUnique();
         }
     }
 }

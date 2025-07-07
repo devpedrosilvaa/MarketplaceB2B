@@ -8,5 +8,7 @@ using System.Threading.Tasks;
 namespace MarketplaceB2B.Application.Interfaces {
     public interface IProviderRepository {
         Task<Provider> SaveProvider(Provider provider);
+        Task<Provider?> GetProviderByUserId(string userId);
+        Task<Provider?> GetProviderByCPF(string CPF);
     }
 }

@@ -48,7 +48,7 @@ namespace MarketplaceB2B.API.Controllers {
                     CreatedAt = DateTime.UtcNow,
                 };
 
-                var result = await _userManager.CreateAsync(user, userRegisterDTO.Password);
+                var result = await _userManager.CreateAsync(user, userRegisterDTO.Password!);
                 if (result.Succeeded) {
                     var resultRole = await _userManager.AddToRoleAsync(user, "User");
                     if (resultRole.Succeeded)
@@ -78,15 +78,15 @@ namespace MarketplaceB2B.API.Controllers {
                     return BadRequest(problemDetails);
                 }
 
-                var user = await _userManager.Users.FirstOrDefaultAsync(u => u.Email.ToLower() == userLoginDTO.Email.ToLower());
+                var user = await _userManager.Users.FirstOrDefaultAsync(u => u.Email!.ToLower() == userLoginDTO.Email!.ToLower());
                 if (user == null)
                     return Unauthorized("Email or password is incorrect");
 
-                var result = await _signInManager.CheckPasswordSignInAsync(user, userLoginDTO.Password, false);
+                var result = await _signInManager.CheckPasswordSignInAsync(user, userLoginDTO.Password!, false);
                 if (result.Succeeded) {
                     user.LastLogin = DateTime.UtcNow;
                     await _userManager.UpdateAsync(user);
-                    var token = await _tokenService.GenerateToken(user.UserName);
+                    var token = await _tokenService.GenerateToken(user.UserName!);
                     return Ok(new { Token = token });
                 }
                 else
