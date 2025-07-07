@@ -1,15 +1,27 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
+    <Compile Remove="Mappers\**" />
+    <Compile Remove="Services\**" />
+    <EmbeddedResource Remove="Mappers\**" />
+    <EmbeddedResource Remove="Services\**" />
+    <None Remove="Mappers\**" />
+    <None Remove="Services\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\MarketplaceB2B.Domain\MarketplaceB2B.Domain.csproj" />
   </ItemGroup>
 
   <ItemGroup>
+<<<<<<< HEAD
+=======
     <Folder Include="Mappers\" />
     <Folder Include="Services\" />
   </ItemGroup>
 
   <ItemGroup>
+>>>>>>> origin/main
     <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="12.0.0" />
   </ItemGroup>
 

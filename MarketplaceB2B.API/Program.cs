@@ -8,6 +8,10 @@ using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
 using FluentValidation;
 using MarketplaceB2B.Application.Validators;
+<<<<<<< HEAD
+using MarketplaceB2B.Infrastructure.Data.Repositories;
+=======
+>>>>>>> origin/main
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -51,6 +55,11 @@ builder.Services.AddAuthentication(options => {
 });
 
 builder.Services.AddScoped<ITokenService, TokenService>();
+<<<<<<< HEAD
+builder.Services.AddScoped<IProviderRepository, ProviderRepository>();
+builder.Services.AddScoped<IProviderService, ProviderService>();
+=======
+>>>>>>> origin/main
 
 builder.Services.AddOpenApi();
 
