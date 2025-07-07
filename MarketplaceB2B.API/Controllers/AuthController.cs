@@ -14,6 +14,7 @@ namespace MarketplaceB2B.API.Controllers {
         private readonly UserManager<AppUser> _userManager;
         private readonly SignInManager<AppUser> _signInManager;
         private readonly ITokenService _tokenService;
+<<<<<<< HEAD
         private readonly IValidator<UserRegisterDTO> _registerValidator;
         private readonly IValidator<UserLoginDTO> _loginValidator;
 
@@ -24,12 +25,28 @@ namespace MarketplaceB2B.API.Controllers {
             _tokenService = tokenService;
             _registerValidator = registerValidator;
             _loginValidator = loginValidator;
+=======
+        private readonly IValidator<UserRegisterDTO> _validatorUserRegisterDTO;
+        private readonly IValidator<UserLoginDTO> _validatorUserLoginDTO;
+
+        public AuthController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager, ITokenService tokenService,
+                                IValidator<UserRegisterDTO> validatorUserRegisterDTO, IValidator<UserLoginDTO> validatorUserLoginDTO) {
+            _userManager = userManager;
+            _signInManager = signInManager;
+            _tokenService = tokenService;
+            _validatorUserRegisterDTO = validatorUserRegisterDTO;
+            _validatorUserLoginDTO = validatorUserLoginDTO;
+>>>>>>> origin/main
         }
 
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] UserRegisterDTO userRegisterDTO){
             try {
+<<<<<<< HEAD
                 var validationResult = _registerValidator.Validate(userRegisterDTO);
+=======
+                var validationResult = _validatorUserRegisterDTO.Validate(userRegisterDTO);
+>>>>>>> origin/main
                 if (!validationResult.IsValid) {
                     var problemDetails = new HttpValidationProblemDetails(validationResult.ToDictionary()) {
                         Status = StatusCodes.Status400BadRequest,
@@ -67,7 +84,11 @@ namespace MarketplaceB2B.API.Controllers {
         [HttpPost("login")]
         public async Task<IActionResult> Login([FromBody] UserLoginDTO userLoginDTO) {
             try {
+<<<<<<< HEAD
                 var validationResult = _loginValidator.Validate(userLoginDTO);
+=======
+                var validationResult = _validatorUserLoginDTO.Validate(userLoginDTO);
+>>>>>>> origin/main
                 if (!validationResult.IsValid) {
                     var problemDetails = new HttpValidationProblemDetails(validationResult.ToDictionary()) {
                         Status = StatusCodes.Status400BadRequest,

@@ -19,6 +19,7 @@ namespace MarketplaceB2B.Infrastructure.Migrations
                 .HasAnnotation("ProductVersion", "8.0.13")
                 .HasAnnotation("Relational:MaxIdentifierLength", 64);
 
+<<<<<<< HEAD
             modelBuilder.Entity("MarketplaceB2B.Infrastructure.Identities.AppProvider", b =>
                 {
                     b.Property<int>("Id")
@@ -45,6 +46,8 @@ namespace MarketplaceB2B.Infrastructure.Migrations
                     b.ToTable("Providers");
                 });
 
+=======
+>>>>>>> origin/main
             modelBuilder.Entity("MarketplaceB2B.Infrastructure.Identities.AppUser", b =>
                 {
                     b.Property<string>("Id")
@@ -146,13 +149,21 @@ namespace MarketplaceB2B.Infrastructure.Migrations
                     b.HasData(
                         new
                         {
+<<<<<<< HEAD
                             Id = "2eb4ae7d-2f24-4fac-86e3-b9c858d7fae3",
+=======
+                            Id = "e0fd2b8d-1e96-49d4-9f24-f33698febc9d",
+>>>>>>> origin/main
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
+<<<<<<< HEAD
                             Id = "ccce968e-3d40-48a1-b0b2-95b83315d607",
+=======
+                            Id = "999cabc0-db26-4527-8ea0-dbb927b77394",
+>>>>>>> origin/main
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -260,6 +271,7 @@ namespace MarketplaceB2B.Infrastructure.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+<<<<<<< HEAD
             modelBuilder.Entity("MarketplaceB2B.Infrastructure.Identities.AppProvider", b =>
                 {
                     b.HasOne("MarketplaceB2B.Infrastructure.Identities.AppUser", "AppUser")
@@ -269,6 +281,8 @@ namespace MarketplaceB2B.Infrastructure.Migrations
                     b.Navigation("AppUser");
                 });
 
+=======
+>>>>>>> origin/main
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -319,12 +333,15 @@ namespace MarketplaceB2B.Infrastructure.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
+<<<<<<< HEAD
 
             modelBuilder.Entity("MarketplaceB2B.Infrastructure.Identities.AppUser", b =>
                 {
                     b.Navigation("Provider")
                         .IsRequired();
                 });
+=======
+>>>>>>> origin/main
 #pragma warning restore 612, 618
         }
     }
