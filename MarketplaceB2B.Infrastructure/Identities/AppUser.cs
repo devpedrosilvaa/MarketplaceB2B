@@ -11,9 +11,6 @@ namespace MarketplaceB2B.Infrastructure.Identities {
         public TypeUser TypeUser { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime LastLogin { get; set; }
-<<<<<<< HEAD
         public AppProvider Provider { get; set; }
-=======
->>>>>>> origin/main
     }
 }

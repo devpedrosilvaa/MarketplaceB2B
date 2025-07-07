@@ -1,7 +1,4 @@
 .vs
 **/obj/
-<<<<<<< HEAD
 **/bin/
-=======
-**/bin/
->>>>>>> origin/main
+**/Migrations/
